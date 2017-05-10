@@ -1,6 +1,6 @@
 <?php
 
-namespace Pikl\ConfigParams\DI;
+namespace Pikl\DI;
 
 use Nette\DI\Compiler;
 use Nette\DI\CompilerExtension;
