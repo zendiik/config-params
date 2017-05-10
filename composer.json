@@ -1,7 +1,7 @@
 {
     "name": "pikl-cz/config-params",
     "version": "0.0.1",
-    "description": "Gettery pro zjištění v jakých módech je aplikace.",
+    "description": "Gettery pro informace z contextu nette aplikace.",
     "keywords": ["nette", "config", "params"],
     "license": "MIT",
     "authors": [
