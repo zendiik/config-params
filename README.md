@@ -6,8 +6,10 @@ extensions:
     - Pikl\DI\ConfigParamsExtension
     
 # použití
+<?php
+...
 use Pikl\ConfigParams;
-
+...
 class BasePresenter extends Nette\Application\UI\Presenter {
 
 	/** @var Pikl\ConfigParams\ConfigParams */
