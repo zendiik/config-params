@@ -2,8 +2,15 @@
 Gettery pro zjištění v jakých módech je nette aplikace.
 
 # instalace
-Do extensions v config.neon přidat: 
-**- Pikl\DI\ConfigParamsExtension**
+```
+composer require pikl-cz/config-params
+```
+
+# implementace v config.neon
+```
+extensions:
+    - Pikl\DI\ConfigParamsExtension
+```    
     
 # použití
 ```
