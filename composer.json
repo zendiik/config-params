@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Pikl\\ConfigParams\\": "src/ConfigParams"
+            "Pikl\\ConfigParams\\": "src/"
         }
     }
 }
