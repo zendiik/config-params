@@ -21,7 +21,7 @@ class BasePresenter extends Nette\Application\UI\Presenter {
 	/** @var Pikl\ConfigParams */
 	public $configParams;
 	
-	public function injectAnotherService(ConfigParams $configParams) {
+	public function injectConfigParams(ConfigParams $configParams) {
         	$this->configParams = $configParams;
     	}
 
