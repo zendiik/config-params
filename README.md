@@ -18,12 +18,12 @@ use Pikl\ConfigParams;
 
 class BasePresenter extends Nette\Application\UI\Presenter {
 
-	/** @var Pikl\ConfigParams\ConfigParams */
+	/** @var Pikl\ConfigParams */
 	public $configParams;
 	
-	public function __construct(ConfigParams $configParams) {
-		$this->configParams = $configParams;
-	}
+	public function injectAnotherService(ConfigParams $configParams) {
+        	$this->configParams = $configParams;
+    	}
 
 	function startup() {
 		parent::startup();
