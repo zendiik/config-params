@@ -12,15 +12,27 @@ final class ConfigParams {
 	}
 
 	public function getDebugMode() {
-		return $this->context->parameters['debugMode'];
+		if (isset($this->context->parameters['debugMode'])) {
+			return $this->context->parameters['debugMode'];
+		} else {
+			return false;
+		}
 	}
 
 	public function getProductionMode() {
-		return $this->context->parameters['productionMode'];
+		if (isset($this->context->parameters['productionMode'])) {
+			return $this->context->parameters['productionMode'];
+		} else {
+			return false;
+		}
 	}
 
 	public function getConsoleMode() {
-		return $this->context->parameters['consoleMode'];
+		if (isset($this->context->parameters['consoleMode'])) {
+			return $this->context->parameters['consoleMode'];
+		} else {
+			return false;
+		}
 	}
 
 }
