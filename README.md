@@ -7,7 +7,7 @@ Do extensions v config.neon přidat:
     
 # použití
 ```
-**use Pikl\ConfigParams;**
+use Pikl\ConfigParams;
 
 class BasePresenter extends Nette\Application\UI\Presenter {
 
