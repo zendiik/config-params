@@ -1,6 +1,6 @@
 <?php
 
-namespace Pikl\ConfigParams;
+namespace Pikl;
 
 final class ConfigParams {
 
