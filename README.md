@@ -3,7 +3,7 @@ Gettery pro zjištění v jakých módech je nette aplikace.
 
 # instalace
 extensions:
-    - Pikl\DI\ConfigParamsExtension
+- Pikl\DI\ConfigParamsExtension
     
 # použití
 
