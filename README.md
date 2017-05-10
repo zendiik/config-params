@@ -2,12 +2,10 @@
 Gettery pro zjištění v jakých módech je nette aplikace.
 
 # instalace
-extensions:
-- Pikl\DI\ConfigParamsExtension
+Do extensions v config.neon přidat: "- Pikl\DI\ConfigParamsExtension"
     
 # použití
-
-use Pikl\ConfigParams;
+"use Pikl\ConfigParams;"
 
 class BasePresenter extends Nette\Application\UI\Presenter {
 
