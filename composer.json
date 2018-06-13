@@ -1,5 +1,5 @@
 {
-    "name": "pikl-cz/config-params",
+    "name": "netleak/config-params",
     "description": "Gettery pro informace z contextu nette aplikace.",
     "keywords": ["nette", "config", "params"],
     "license": "MIT",
@@ -7,6 +7,11 @@
         {
             "name": "Filip Jan Pikl",
             "email": "fjpikl@gmail.com"
+        },
+        {
+            "name": "Jan 'Netleak' Ženíšek",
+            "email": "jan.zenisek@outlook.com",
+            "homepage": "https://www.zendovo.eu"
         }
     ],
     "minimum-stability": "stable",

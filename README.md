@@ -1,24 +1,24 @@
 # config-params
-Gettery pro zjištění v jakých módech je nette aplikace.
+Getters to find out in which modes are the Nette application.
 
-# instalace
+# Installation
 ```
-composer require pikl-cz/config-params
+composer require netleak/config-params
 ```
 
-# implementace v config.neon
+# Implementation in config.neon
 ```
 extensions:
-    - Pikl\DI\ConfigParamsExtension
+    - Netleak\DI\ConfigParamsExtension
 ```    
     
-# použití
+# Usage
 ```
-use Pikl\ConfigParams;
+use Netleak\ConfigParams;
 
 class BasePresenter extends Nette\Application\UI\Presenter {
 
-	/** @var Pikl\ConfigParams */
+	/** @var Netleak\ConfigParams */
 	public $configParams;
 	
 	public function injectConfigParams(ConfigParams $configParams) {

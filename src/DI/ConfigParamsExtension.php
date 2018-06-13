@@ -1,6 +1,6 @@
 <?php
 
-namespace Pikl\DI;
+namespace Netleak\DI;
 
 use Nette\DI\Compiler;
 use Nette\DI\CompilerExtension;

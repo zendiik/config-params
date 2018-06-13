@@ -1,6 +1,6 @@
 <?php
 
-namespace Pikl;
+namespace Netleak;
 
 //Suggestion: BasicInfo
 final class ConfigParams {
@@ -15,25 +15,25 @@ final class ConfigParams {
 	public function getDebugMode() {
 		if (isset($this->context->parameters['debugMode'])) {
 			return $this->context->parameters['debugMode'];
-		} else {
-			return false;
 		}
+
+		return false;
 	}
 
 	public function getProductionMode() {
 		if (isset($this->context->parameters['productionMode'])) {
 			return $this->context->parameters['productionMode'];
-		} else {
-			return false;
 		}
+
+		return false;
 	}
 
 	public function getConsoleMode() {
 		if (isset($this->context->parameters['consoleMode'])) {
 			return $this->context->parameters['consoleMode'];
-		} else {
-			return false;
 		}
+
+		return false;
 	}
 
 	/*
