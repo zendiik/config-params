@@ -3,6 +3,7 @@ stages:
 
 .phpcode: &phpcode
   stage: test
+  image: bukj/php7-node-docker-ci:slim72
   before_script:
     - composer install --prefer-dist -o
   cache:
