@@ -1,6 +1,8 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Netleak;
+
+use Nette\DI\Container;
 
 //Suggestion: BasicInfo
 final class ConfigParams {
@@ -8,11 +10,11 @@ final class ConfigParams {
 	/** @var \Nette\DI\Container */
 	private $context;
 
-	public function __construct(\Nette\DI\Container $context = NULL) {
+	public function __construct(Container $context) {
 		$this->context = $context;
 	}
 
-	public function getDebugMode() {
+	public function getDebugMode(): bool {
 		if (isset($this->context->parameters['debugMode'])) {
 			return $this->context->parameters['debugMode'];
 		}
@@ -20,7 +22,7 @@ final class ConfigParams {
 		return false;
 	}
 
-	public function getProductionMode() {
+	public function getProductionMode(): bool {
 		if (isset($this->context->parameters['productionMode'])) {
 			return $this->context->parameters['productionMode'];
 		}
@@ -28,7 +30,7 @@ final class ConfigParams {
 		return false;
 	}
 
-	public function getConsoleMode() {
+	public function getConsoleMode(): bool {
 		if (isset($this->context->parameters['consoleMode'])) {
 			return $this->context->parameters['consoleMode'];
 		}
@@ -45,7 +47,7 @@ final class ConfigParams {
 	 * getDevice()
 	 * getBrowserLanguage()
 	 * getProtocol()
-     * setCustom(array()) and getCustom(array()) - array with optional basic variables
+	 * setCustom(array()) and getCustom(array()) - array with optional basic variables
 	 * setMetadata and getMetadata // arrays /
 	 * setMetaData() {
 	 *  this->presenter->template->$variable =
