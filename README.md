@@ -1,4 +1,9 @@
-# config-params
+# Config params
+
+[![Build](https://gitlab.zendovo.eu/netleak/config-params/badges/master/build.svg)](https://gitlab.zendovo.eu/netleak/config-params)
+[![Latest Stable Version](https://poser.pugx.org/netleak/config-params/v/stable)](https://packagist.org/packages/netleak/config-params)
+[![License](https://poser.pugx.org/netleak/config-params/license)](https://packagist.org/packages/netleak/config-params)
+
 Getters to find out in which modes are the Nette application.
 
 # Installation
@@ -6,11 +11,11 @@ Getters to find out in which modes are the Nette application.
 composer require netleak/config-params
 ```
 
-# Implementation in config.neon
+Write this to config.neon
 ```
 extensions:
     - Netleak\DI\ConfigParamsExtension
-```    
+```
     
 # Usage
 ```
