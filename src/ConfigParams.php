@@ -38,6 +38,29 @@ final class ConfigParams {
 		return false;
 	}
 
+	/**
+	 * @return mixed[]|null
+	 */
+	public function getParameters(): ?array {
+		if (!empty($this->context->getParameters())) {
+			return $this->context->getParameters();
+		}
+
+		return null;
+	}
+
+	/**
+	 * @param string $parameter
+	 * @return mixed|null
+	 */
+	public function getParameter(string $parameter) {
+		if (!empty($this->context->getParameters()[$parameter])) {
+			return $this->context->getParameters()[$parameter];
+		}
+
+		return null;
+	}
+
 	/*
 	 * TODO
 	 *
