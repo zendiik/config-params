@@ -54,8 +54,10 @@ final class ConfigParams {
 	 * @return mixed|null
 	 */
 	public function getParameter(string $parameter) {
-		if (!empty($this->context->getParameters()[$parameter])) {
-			return $this->context->getParameters()[$parameter];
+		$param = $this->context->getParameters()[$parameter];
+
+		if (isset($param) || !empty($param)) {
+			return $param;
 		}
 
 		return null;
