@@ -3,7 +3,7 @@ stages:
 
 .phpcode: &phpcode
   stage: test
-  image: bukj/php7-node-docker-ci:slim72
+  image: registry.zendovo.eu/netleak/dockers/php:7.4-xdebug
   before_script:
     - composer install --prefer-dist -o
   cache:
