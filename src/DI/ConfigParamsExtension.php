@@ -8,10 +8,9 @@ use Nette\DI\CompilerExtension;
 final class ConfigParamsExtension extends CompilerExtension {
 
 	public function loadConfiguration(): void {
-		Compiler::loadDefinitions(
-			$this->getContainerBuilder(),
-			$this->loadFromFile(__DIR__ . '/../config/services.neon')
-		);
+		$compiler = new Compiler();
+
+		$compiler->loadDefinitionsFromConfig($this->loadFromFile(__DIR__ . '/../config/services.neon'));
 	}
 
 }

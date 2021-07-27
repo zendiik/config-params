@@ -13,5 +13,4 @@ stages:
 code:check:
   <<: *phpcode
   script:
-    - vendor/bin/phpcs
-    - vendor/bin/phpstan analyse --level 7 --no-progress -c ./phpstan.neon src/
+    - make cs

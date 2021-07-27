@@ -7,8 +7,7 @@ use Nette\DI\Container;
 //Suggestion: BasicInfo
 final class ConfigParams {
 
-	/** @var \Nette\DI\Container */
-	private $context;
+	private Container $context;
 
 	public function __construct(Container $context) {
 		$this->context = $context;
@@ -38,9 +37,7 @@ final class ConfigParams {
 		return false;
 	}
 
-	/**
-	 * @return mixed[]|null
-	 */
+	/** @return array<mixed>|null */
 	public function getParameters(): ?array {
 		if (!empty($this->context->getParameters())) {
 			return $this->context->getParameters();

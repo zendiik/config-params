@@ -1,4 +1,2 @@
 .idea/
-*.lock
 vendor/
-.phpcs-cache

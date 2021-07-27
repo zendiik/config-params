@@ -1,2 +1,6 @@
 parameters:
-	bootstrap: %rootDir%/../../../phpstan-bootstrap.php
+	level: max
+	paths:
+		- src
+	bootstrapFiles:
+	 	- %rootDir%/../../../phpstan-bootstrap.php
