@@ -13,4 +13,5 @@ stages:
 code:check:
   <<: *phpcode
   script:
-    - make cs
+    - vendor/bin/phpcs
+    - vendor/bin/phpstan analyse --no-progress
