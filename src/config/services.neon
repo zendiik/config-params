@@ -1,1 +1,2 @@
-- Netleak\ConfigParams
+services:
+	- Netleak\ConfigParams(%parameters%)

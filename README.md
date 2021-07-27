@@ -7,32 +7,31 @@
 Getters to find out in which modes are the Nette application.
 
 # Installation
-```
+```shell
 composer require netleak/config-params
 ```
 
 Write this to config.neon
-```
+```neon
 extensions:
     - Netleak\DI\ConfigParamsExtension
 ```
     
 # Usage
-```
+```php
 use Netleak\ConfigParams;
 
 class BasePresenter extends Nette\Application\UI\Presenter {
 
-	/** @var Netleak\ConfigParams */
-	public $configParams;
+	public ConfigParams $configParams;
 	
-	public function injectConfigParams(ConfigParams $configParams) {
+	public function injectConfigParams(ConfigParams $configParams): void {
         	$this->configParams = $configParams;
     	}
 
 	function startup() {
 		parent::startup();
-		$this->template->debugMode = $this->configParams->getDebugMode();
+		$this->getTemplate()->setParameters(array('debugMode' => $this->configParams->getDebugMode()));
 	}
 
 }
