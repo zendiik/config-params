@@ -13,8 +13,12 @@ final class ConfigParams {
 		$this->parameters = $parameters;
 	}
 
-	public function getDebugMode(): bool {
-		return $this->parameters['debugMode'] ?? false;
+	public function getDebugMode(bool $nette = false): bool {
+		if ($nette) {
+			return $this->parameters['debugMode'];
+		}
+
+		return $this->parameters['debug'] ?? false;
 	}
 
 	public function getProductionMode(): bool {
