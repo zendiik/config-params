@@ -3,7 +3,7 @@ stages:
 
 .phpcode: &phpcode
   stage: test
-  image: registry.zendovo.eu/netleak/dockers/php:8.1-xdebug
+  image: registry.zendovo.eu/netleak/dockers/php:8.1
   before_script:
     - composer install --prefer-dist -o
   cache:
