@@ -20,4 +20,6 @@
             <directory>src</directory>
         </include>
     </source>
+
+    <coverage includeUncoveredFiles="false" />
 </phpunit>
