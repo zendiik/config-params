@@ -12,8 +12,8 @@ if (!function_exists('dd')) {
 			} else {
 				var_dump($x);
 			}
-
-			die(1);
 		}
+
+		die(1);
 	}
 }

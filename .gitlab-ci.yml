@@ -10,16 +10,47 @@ stages:
     paths:
       - vendor/
 
-check:code:
+check:phpcs:
   <<: *phpcode
   script:
-    - vendor/bin/phpcs
-    - vendor/bin/phpstan analyse --no-progress
+    - vendor/bin/phpcs --report=junit --report-file=phpcs-report.xml
+  artifacts:
+    reports:
+      junit: phpcs-report.xml
+  only:
+    - merge_requests
+    - master
+    - develop
 
-check:tests:
+check:phpstan:
   <<: *phpcode
   script:
-    - vendor/bin/phpunit --coverage-clover=coverage.xml --log-junit=test-report.xml
+    - vendor/bin/phpstan analyse --error-format=junit --no-progress > phpstan-report.xml
+  artifacts:
+    reports:
+      junit: phpstan-report.xml
+  only:
+    - merge_requests
+    - master
+    - develop
+
+check:phpunit:
+  <<: *phpcode
+  script:
+    - vendor/bin/phpunit --coverage-text --log-junit junit_reports/phpunit.xml
+    - vendor/bin/phpunit --do-not-cache-result --log-junit phpunit-report.xml --coverage-cobertura phpunit-coverage.xml --coverage-text --colors=never
+  artifacts:
+      when: always
+      reports:
+        junit: phpunit-report.xml
+        coverage_report:
+          coverage_format: cobertura
+          path: phpunit-coverage.xml
+  coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+  only:
+    - merge_requests
+    - master
+    - develop
 
 check:sonarqube:
   stage: test
