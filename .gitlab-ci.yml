@@ -14,7 +14,7 @@ stages:
 check:phpcs:
   <<: *phpcode
   script:
-    - vendor/bin/phpcs --report=junit --report-file=phpcs-report.xml
+    - vendor/bin/phpcs -vvv --report=junit --report-file=phpcs-report.xml
   artifacts:
     reports:
       junit: phpcs-report.xml
