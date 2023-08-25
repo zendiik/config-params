@@ -11,7 +11,7 @@ stages:
     paths:
       - vendor/
 
-check:phpcs:
+phpcs:
   <<: *phpcode
   script:
     - vendor/bin/phpcs -vvv --report=junit --report-file=phpcs-report.xml
@@ -23,7 +23,7 @@ check:phpcs:
     - master
     - develop
 
-check:phpstan:
+phpstan:
   <<: *phpcode
   script:
     - vendor/bin/phpstan analyse --error-format=junit --no-progress > phpstan-report.xml
@@ -35,7 +35,7 @@ check:phpstan:
     - master
     - develop
 
-check:phpunit:
+phpunit:
   <<: *phpcode
   script:
     - vendor/bin/phpunit --do-not-cache-result --log-junit phpunit-report.xml --coverage-cobertura phpunit-coverage.xml --coverage-text --colors=never
@@ -52,8 +52,10 @@ check:phpunit:
     - master
     - develop
 
-check:sonarqube:
+sonarqube:
   stage: sonarqube
+  dependencies:
+    - phpunit
   image:
     name: sonarsource/sonar-scanner-cli:latest
     entrypoint: [ "" ]
