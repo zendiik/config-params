@@ -17,12 +17,19 @@
 		<exclude-pattern>*Test.php</exclude-pattern>
 	</rule>
 
+	<rule ref="SlevomatCodingStandard.Attributes.AttributesOrder">
+		<properties>
+			<property name="orderAlphabetically" value="true" />
+		</properties>
+	</rule>
+
 	<rule ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/ruleset.xml">
 		<exclude name="PEAR.Functions.FunctionCallSignature.Indent"/>
 		<exclude name="Squiz.Commenting.FunctionComment.MissingParamTag"/>
 		<exclude name="PEAR.Functions.FunctionCallSignature.OpeningIndent"/>
 		<exclude name="SlevomatCodingStandard.Files.TypeNameMatchesFileName"/>
 		<exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedExceptions"/>
+		<exclude name="SlevomatCodingStandard.Complexity.Cognitive.ComplexityTooHigh"/>
 		<exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint.UselessAnnotation"/>
 		<exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint.UselessAnnotation"/>
 		<exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint"/>
@@ -68,4 +75,5 @@
 	<arg name="parallel" value="80"/>
 
 	<file>src/</file>
+	<file>tests/</file>
 </ruleset>

@@ -14,7 +14,11 @@ final class ConfigParams {
 	}
 
 	public function getDebugMode(bool $nette = false): bool {
-		$debug = $nette ? $this->parameters['debugMode'] : $this->parameters['debug'];
+		if ($nette) {
+			$debug = array_key_exists('debugMode', $this->parameters) ? $this->parameters['debugMode'] : false;
+		} else {
+			$debug = array_key_exists('debug', $this->parameters) ? $this->parameters['debug'] : false;
+		}
 
 		assert(is_bool($debug) || is_null($debug));
 
@@ -22,14 +26,14 @@ final class ConfigParams {
 	}
 
 	public function getProductionMode(): bool {
-		$productionMode = $this->parameters['productionMode'];
+		$productionMode = $this->parameters['productionMode'] ?? null;
 		assert(is_bool($productionMode) || is_null($productionMode));
 
 		return $productionMode ?? false;
 	}
 
 	public function getConsoleMode(): bool {
-		$consoleMode = $this->parameters['consoleMode'];
+		$consoleMode = $this->parameters['consoleMode'] ?? null;
 		assert(is_bool($consoleMode) || is_null($consoleMode));
 
 		return $consoleMode ?? false;
@@ -44,12 +48,8 @@ final class ConfigParams {
 		return null;
 	}
 
-	/**
-	 * @param string $parameter
-	 * @return mixed|null
-	 */
-	public function getParameter(string $parameter) {
-		$param = $this->parameters[$parameter];
+	public function getParameter(string $parameter): mixed {
+		$param = $this->parameters[$parameter] ?? null;
 
 		if (isset($param) || !empty($param)) {
 			return $param;

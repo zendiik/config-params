@@ -3,7 +3,7 @@ stages:
 
 .phpcode: &phpcode
   stage: test
-  image: registry.zendovo.eu/netleak/dockers/php:8.1
+  image: registry.zendovo.eu/netleak/dockers/php:8.1-xdebug
   before_script:
     - composer install --prefer-dist -o
   cache:
@@ -16,11 +16,16 @@ check:code:
     - vendor/bin/phpcs
     - vendor/bin/phpstan analyse --no-progress
 
+check:tests:
+  <<: *phpcode
+  script:
+    - vendor/bin/phpunit --coverage-clover=coverage.xml --log-junit=test-report.xml
+
 check:sonarqube:
   stage: test
   image:
     name: sonarsource/sonar-scanner-cli:latest
-    entrypoint: [""]
+    entrypoint: [ "" ]
   variables:
     SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
     GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
