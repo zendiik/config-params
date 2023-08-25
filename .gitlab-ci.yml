@@ -7,6 +7,7 @@ stages:
   image: registry.zendovo.eu/netleak/dockers/php:8.1-xdebug
   before_script:
     - composer install --prefer-dist -o
+    - mkdir -p junit_reports
   cache:
     paths:
       - vendor/
@@ -14,10 +15,10 @@ stages:
 phpcs:
   <<: *phpcode
   script:
-    - vendor/bin/phpcs -vvv --report=junit --report-file=phpcs-report.xml
+    - vendor/bin/phpcs -vvv --report=junit --report-file=junit_reports/phpcs-report.xml
   artifacts:
     reports:
-      junit: phpcs-report.xml
+      junit: junit_reports/phpcs-report.xml
   only:
     - merge_requests
     - master
@@ -26,10 +27,10 @@ phpcs:
 phpstan:
   <<: *phpcode
   script:
-    - vendor/bin/phpstan analyse --error-format=junit --no-progress > phpstan-report.xml
+    - vendor/bin/phpstan analyse --error-format=junit --no-progress > junit_reports/phpstan-report.xml
   artifacts:
     reports:
-      junit: phpstan-report.xml
+      junit: junit_reports/phpstan-report.xml
   only:
     - merge_requests
     - master
@@ -38,14 +39,17 @@ phpstan:
 phpunit:
   <<: *phpcode
   script:
-    - vendor/bin/phpunit --do-not-cache-result --log-junit phpunit-report.xml --coverage-cobertura phpunit-coverage.xml --coverage-text --colors=never
+    - vendor/bin/phpunit --do-not-cache-result --log-junit junit_reports/phpunit-report.xml --coverage-cobertura junit_reports/phpunit-coverage.xml --coverage-text --colors=never
   artifacts:
-      when: always
-      reports:
-        junit: phpunit-report.xml
-        coverage_report:
-          coverage_format: cobertura
-          path: phpunit-coverage.xml
+    paths:
+      - junit_reports
+    when: always
+    reports:
+      junit: junit_reports/phpunit-report.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: junit_reports/phpunit-coverage.xml
+    expire_in: 30 min
   coverage: '/^\s*Lines:\s*\d+.\d+\%/'
   only:
     - merge_requests
