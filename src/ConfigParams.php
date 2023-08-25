@@ -14,19 +14,25 @@ final class ConfigParams {
 	}
 
 	public function getDebugMode(bool $nette = false): bool {
-		if ($nette) {
-			return $this->parameters['debugMode'];
-		}
+		$debug = $nette ? $this->parameters['debugMode'] : $this->parameters['debug'];
 
-		return $this->parameters['debug'] ?? false;
+		assert(is_bool($debug) || is_null($debug));
+
+		return $debug ?? false;
 	}
 
 	public function getProductionMode(): bool {
-		return $this->parameters['productionMode'] ?? false;
+		$productionMode = $this->parameters['productionMode'];
+		assert(is_bool($productionMode) || is_null($productionMode));
+
+		return $productionMode ?? false;
 	}
 
 	public function getConsoleMode(): bool {
-		return $this->parameters['consoleMode'] ?? false;
+		$consoleMode = $this->parameters['consoleMode'];
+		assert(is_bool($consoleMode) || is_null($consoleMode));
+
+		return $consoleMode ?? false;
 	}
 
 	/** @return array<mixed>|null */
