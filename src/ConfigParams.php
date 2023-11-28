@@ -49,17 +49,18 @@ final class ConfigParams {
 	}
 
 	public function getParameter(string $parameter): mixed {
-		$param = $this->parameters;
+		$params = $this->parameters;
+		assert(is_array($params));
 
 		foreach (explode('.', $parameter) as $key) {
-			if (array_key_exists($key, $param)) {
-				$param = $param[$key];
-			} else {
+			if (!array_key_exists($key, $params)) {
 				return null;
 			}
+
+			$params = $params[$key];
 		}
 
-		return $param;
+		return $params;
 	}
 
 }
