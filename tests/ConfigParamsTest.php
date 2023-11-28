@@ -58,9 +58,10 @@ final class ConfigParamsTest extends TestCase {
 	}
 
 	public function testGetParameter(): void {
-		$config = new ConfigParams(['param1' => 'value1', 'param2' => 'value2']);
+		$config = new ConfigParams(['param1' => 'value1', 'param2' => 'value2', 'param3' => ['param4' => 'value4']]);
 		$this->assertEquals('value1', $config->getParameter('param1'));
 		$this->assertEquals('value2', $config->getParameter('param2'));
+		$this->assertEquals('value4', $config->getParameter('param3.param4'));
 
 		$config = new ConfigParams([]);
 		$this->assertNull($config->getParameter('param1'));
