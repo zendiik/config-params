@@ -1,6 +1,7 @@
 <?php declare(strict_types = 1);
 
 use Netleak\ConfigParams;
+use Netleak\Exception\ParameterNotFoundException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
@@ -62,9 +63,14 @@ final class ConfigParamsTest extends TestCase {
 		$this->assertEquals('value1', $config->getParameter('param1'));
 		$this->assertEquals('value2', $config->getParameter('param2'));
 		$this->assertEquals('value4', $config->getParameter('param3.param4'));
+	}
 
-		$config = new ConfigParams([]);
-		$this->assertNull($config->getParameter('param1'));
+	public function testGetParameterThrowsException(): void {
+		$config = new ConfigParams(['param1' => 'value1', 'param2' => 'value2', 'param3' => ['param4' => 'value4']]);
+
+		$this->expectException(ParameterNotFoundException::class);
+
+		$config->getParameter('param5');
 	}
 
 }

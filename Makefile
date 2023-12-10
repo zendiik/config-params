@@ -1,3 +1,8 @@
+.DEFAULT_GOAL := cc
+
+cc:
+	composer dump-autoload -o
+
 cs:
 	php vendor/bin/phpcs
 	php vendor/bin/phpstan analyze

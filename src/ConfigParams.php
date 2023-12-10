@@ -3,6 +3,8 @@
 namespace Netleak;
 
 //Suggestion: BasicInfo
+use Netleak\Exception\ParameterNotFoundException;
+
 final class ConfigParams {
 
 	/** @var array<mixed> */
@@ -48,12 +50,16 @@ final class ConfigParams {
 		return null;
 	}
 
-	public function getParameter(string $parameter): mixed {
+	public function getParameter(string $parameter, bool $throws = true): mixed {
 		$params = $this->parameters;
 		assert(is_array($params));
 
 		foreach (explode('.', $parameter) as $key) {
 			if (!array_key_exists($key, $params)) {
+				if ($throws) {
+					throw new ParameterNotFoundException(sprintf('Parameter "%s" not found.', $parameter));
+				}
+
 				return null;
 			}
 
