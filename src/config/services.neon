@@ -1,2 +1,2 @@
 services:
-	- Netleak\ConfigParams(%parameters%)
+	- Netleak\ConfigParams(@container::getParameters())
