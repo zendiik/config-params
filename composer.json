@@ -3,17 +3,17 @@
     "description": "Getters to find out in which modes are the Nette application.",
     "keywords": ["nette", "config", "params"],
     "license": "MIT",
-    "version": "1.3.8",
+    "version": "1.3.9",
     "authors": [
 		{
 			"name": "Jan 'Netleak' Ženíšek",
 			"email": "jan.zenisek@outlook.com"
 		}
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=8.3",
-        "nette/di": "~3.0"
+        "nette/di": "~3.0 || ~4.0"
     },
     "autoload": {
         "psr-4": {
